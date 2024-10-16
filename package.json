@@ -1,0 +1,29 @@
+{
+  "name": "playwright-test-automation",
+  "version": "1.0.0",
+  "description": "This is test automation framework to learn the playwright tool",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guptaswapnil44/playwright-automation.git"
+  },
+  "keywords": [
+    "playwright"
+  ],
+  "author": "Swapnil Gupta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/guptaswapnil44/playwright-automation/issues"
+  },
+  "homepage": "https://github.com/guptaswapnil44/playwright-automation#readme",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "playwright": "^1.48.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.48.1"
+  }
+}
