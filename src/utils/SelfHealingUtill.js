@@ -1,6 +1,6 @@
-//import logger from "./LoggerUtil";
+// const logger = require("./LoggerUtil");
 
-export default async function findValidElement(page, locators) {
+async function findValidElement(page, locators) {
   let validElement = null;
   const TIMEOUT_MS = 5000;
 
@@ -9,25 +9,27 @@ export default async function findValidElement(page, locators) {
       const element = page.locator(locator);
       await element.waitFor({ state: "attached", timeout: TIMEOUT_MS });
       validElement = element;
-      //logger.info(`Found valid element with locator: ${locator}`);
-      break; // Exit loop if valid element found
+      // logger.info(`Found valid element with locator: ${locator}`);
+      break; // Exit loop if a valid element is found
     } catch (error) {
-      //logger.error(`Invalid locator: ${locator}`);
+      // logger.error(`Invalid locator: ${locator}`);
     }
   }
 
   if (!validElement) {
-    //logger.error("All locators are invalid");
+    // logger.error("All locators are invalid");
   }
 
   return validElement;
 }
 
-// // Usage example:
+// Example usage:
 // async function exampleUsage(page) {
-//     const locators = ["#selector1", "#selector2", "#selector3"];
-//     const validElement = await findValidElement(page, locators);
-//     if (validElement) {
-//         // Perform actions on validElement
-//     }
+//   const locators = ["#selector1", "#selector2", "#selector3"];
+//   const validElement = await findValidElement(page, locators);
+//   if (validElement) {
+//     // Perform actions on validElement
+//   }
 // }
+
+module.exports = findValidElement;

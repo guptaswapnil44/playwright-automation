@@ -10,8 +10,8 @@ test("simple login test with self heal", async ({ page }) => {
     await loginPage.navigateToLoginPage(decrypt(process.env.prodURL));
     await loginPage.fillUsername_selfheal(decrypt(process.env.username));
     await loginPage.fillPassword(decrypt(process.env.password));
-    await loginPage.clickLoginButton();
-    
+    const homePage = await loginPage.clickLoginButton();
+    await homePage.expectServiceTitleToBeVisible();
   });
 
 test.skip("encrypt env file", async() => {

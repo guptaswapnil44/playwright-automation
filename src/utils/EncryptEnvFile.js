@@ -15,7 +15,7 @@ if (process.env.NODE_ENV) {
 
 //console.log(envFilePath);
 
-export function encryptEnvFile() {
+function encryptEnvFile() {
   const SALT = process.env.SALT || "defaultSALT";
   // Read the .env file
   const envFileContent = fs.readFileSync(envFilePath, "utf8");
@@ -28,7 +28,7 @@ export function encryptEnvFile() {
     if (value) {
       const encryptedValue = CryptoJSUtilFile.AES.encrypt(
         value,
-        SALT,
+        SALT
       ).toString();
       return `${key}=${encryptedValue}`;
     }
@@ -42,19 +42,20 @@ export function encryptEnvFile() {
 
   console.log("Encryption complete. Updated .env file.");
 }
-export function decryptEnvFile() {
+
+function decryptEnvFile() {
   const SALT = process.env.SALT || "defaultSALT";
   // Read the .env file
   const envFileContent = fs.readFileSync(envFilePath, "utf8");
   const envLines = envFileContent.split("\n");
 
-  // Encrypt values and update the array
+  // Decrypt values and update the array
   const decryptedLines = envLines.map((line) => {
     const [key, value] = line.split("=");
 
     if (value) {
       const decryptedValue = CryptoJSUtilFile.AES.decrypt(value, SALT).toString(
-        CryptoJSUtilFile.enc.Utf8,
+        CryptoJSUtilFile.enc.Utf8
       );
 
       return `${key}=${decryptedValue}`;
@@ -69,3 +70,5 @@ export function decryptEnvFile() {
 
   console.log("Decryption complete. Updated .env file.");
 }
+
+module.exports = { encryptEnvFile, decryptEnvFile };
