@@ -25,11 +25,11 @@ module.exports = defineConfig({
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
     baseURL: 'https://login.salesforce.com',
-
+    headless: false, // Run tests in headed mode by default
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
     screenshot: 'on',
-    video: 'off',
+    video: 'on',
   },
 
   /* Configure projects for major browsers */

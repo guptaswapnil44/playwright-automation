@@ -1,5 +1,6 @@
 import {expect } from "@playwright/test";
 import findValidElement from "../utils/SelfHealingUtill";
+import logger from "../utils/LoggerUtil"
 /* This is an ES6 module import syntax used to import specific named exports (Page and expect) from the @playwright/test module. */
 /* The module @playwright/test is Playwright's official test runner package, which provides tools to write and run tests with Playwright. This module includes various utilities, classes, and functions used in browser automation and testing. */
 /* 
@@ -29,11 +30,11 @@ export default class loginPage {
     }
     async navigateToLoginPage(baseURL) {
         await this.page.goto(baseURL);
-        //logger.info("Navigated to ") + baseURL;
+        logger.info("Navigated to "+ baseURL);
     }
     async fillUsername(username) {
         await this.usernameInputSelector.fill(username);
-        //logger.info("Filled username "+username);
+        logger.info("Filled username "+username);
     }
     async fillUsername_selfheal(username) {
         let usernameInputLocator = await findValidElement(this.page,this.usernameInputSelectors );
@@ -43,7 +44,7 @@ export default class loginPage {
       }
       async fillPassword(password) {
         await this.passwordInputSelector.fill(password);
-        //logger.info("Filled pasword");
+        logger.info("Filled password");
       }
       async clickLoginButton() {
         await this.loginButtonSelector.click() 
