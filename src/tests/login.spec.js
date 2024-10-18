@@ -1,7 +1,7 @@
-import { expect, test } from "@playwright/test";
-import LoginPage from "../pages/loginPage";
-import {encryptEnvFile} from "../utils/EncryptEnvFile";
-import {decrypt} from "../utils/CryptojsUtil";
+const test = require("@playwright/test");
+const LoginPage = require("../pages/loginPage");
+const {encryptEnvFile} = require("../utils/EncryptEnvFile");
+const {decrypt} = require("../utils/CryptojsUtil");
 require('dotenv').config(); 
 
 

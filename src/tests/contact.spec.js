@@ -3,14 +3,13 @@ const { decrypt } = require("../utils/CryptojsUtil");
 const logger = require("../utils/LoggerUtil");
 const contactsPayload = require("../testdata/contacts.json");
 const convertCsvFileToJsonFile = require("../utils/CsvtoJsonUtils");
-//const { exportToCsv, exportToJson, generateTestData } = require("../utils/FakerDataUtil");
-//const { demoOutput } = require("../utils/fakersample");
+const { exportToCsv, exportToJson, generateTestData } = require("../utils/FakerDataUtils");
 const LoginPage = require("../pages/loginPage");
 
 
 test.describe("Contacts test cases", async () => {
 
-     test.beforeAll(async function ({ browser }) {
+    test.beforeAll(async function ({ browser }) {
         const context = await browser.newContext();
         page = await context.newPage();
         const loginPage = new LoginPage(page);
@@ -43,7 +42,20 @@ test.describe("Contacts test cases", async () => {
         logger.info("Test for Contact Creation is completed");
     });
 
-    test("csv to json", async () => {
+    test.skip("csv to json", async () => {
         convertCsvFileToJsonFile("data.csv", "datademo.json");
-      });
+    });
+
+    test.skip("Generate test data using FakerUtil", async () => {
+
+        // Generate test data
+        const testData = generateTestData(20);
+
+        // Export data to JSON file
+        exportToJson(testData, 'testData_en.json');
+
+        // Export data to CSV file
+        exportToCsv(testData, 'testData_en.csv');
+
+    });
 });
